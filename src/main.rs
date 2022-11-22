@@ -35,6 +35,17 @@ fn calculator3() {
     test3!(22 * (44 + 66) / 3);
 }
 
+lalrpop_mod!(pub calculator4);
+pub mod ast;
+
+#[test]
+fn calculator4() {
+    let expr = calculator4::ExprParser::new()
+        .parse("22 * 44 + 66")
+        .unwrap();
+    assert_eq!(&format!("{:?}", expr), "((22 * 44) + 66)");
+}
+
 #[cfg(not(test))]
 fn main() {
     println!("Hello, world!");

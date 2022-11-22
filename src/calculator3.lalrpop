@@ -29,7 +29,12 @@ Factor: i32 = {
     Term,
 };
 
-pub Term = { Num, "(" <Term> ")" };
+Term: i32 = {
+    Num,
+    "(" <Expr> ")",
+};
 
-Num: i32 = r"[0-9]+" => i32::from_str(<>).unwrap();
+Num: i32 = {
+    r"[0-9]+" => i32::from_str(<>).unwrap(),
+};
 
